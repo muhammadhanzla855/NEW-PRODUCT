@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDP Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="pdp-gallery">
+    <div class="pdp-gallery__container">
+      <div class="pdp-gallery__grid">
+
+        <!-- Column 1: Thumbnails -->
+        <div class="pdp-gallery__col pdp-gallery__col--thumbs">
+          <div class="pdp-thumbs">
+
+            <!-- Top Arrow -->
+            <div class="pdp-thumbs__arrow pdp-thumbs__arrow--top">
+              <img src="./assets/icons/secound arrow.png" alt="Scroll up thumbnails">
+            </div>
+
+            <!-- Thumbnail viewport -->
+            <div class="pdp-thumbs__viewport">
+              <div class="pdp-thumbs__list">
+                <img src="./assets/images/t-first.png" alt="">
+                <img src="./assets/images/t-secound.png" alt="">
+                <img src="./assets/images/t-three.png" alt="">
+                <img src="./assets/images/t-four.png" alt="">
+                <img src="./assets/images/t-five.png" alt="">
+                <img src="./assets/images/t-six.png" alt="">
+                <img src="./assets/images/t-seven.png" alt="">
+                <img src="./assets/images/t-eight.png" alt="">
+                <img src="./assets/images/t-nine.png" alt="">
+              </div>
+            </div>
+
+            <!-- Bottom Arrow -->
+            <div class="pdp-thumbs__arrow pdp-thumbs__arrow--bottom">
+              <img src="./assets/icons/arrow.png" alt="Scroll down thumbnails">
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Column 2: Main Image -->
+<div class="pdp-gallery__col pdp-gallery__col--main">
+  <div class="pdp-main-image-wrapper">
+    <div class="pdp-main-image-slider">
+      <img src="./assets/images/m-first.png" alt="Main product image">
+      <img src="./assets/images/m-secound.png" alt="Main product image">
+      <img src="./assets/images/m-three.png" alt="Main product image">
+      <img src="./assets/images/m-four.png" alt="Main product image">
+      <img src="./assets/images/m-five.png" alt="Main product image">
+      <img src="./assets/images/m-six.png" alt="Main product image">
+      <img src="./assets/images/m-seven.png" alt="Main product image">
+    </div>
+
+    <!-- Overlay with left arrow, text, right icon -->
+    <div class="pdp-main-overlay">
+      <img src="./assets/icons/m-f.png" alt="Scroll arrow" class="overlay-left-arrow">
+      <div class="overlay-content">
+        <p class="overlay-title">Selection in 3D configurator</p>
+        <p class="overlay-subtitle">65 frdihnd / 48 colors</p>
+      </div>
+      <img src="./assets/icons/m-t.png" alt="Icon" class="overlay-icon">
+    </div>
+  </div>
+</div>
+
+        <!-- Column 3: Product Details -->
+        <div class="pdp-gallery__col pdp-gallery__col--details">
+          <!-- Product info goes here -->
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script type="module" src="index.js"></script>
+</body>
+</html>

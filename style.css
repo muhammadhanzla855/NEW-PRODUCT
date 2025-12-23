@@ -1,0 +1,320 @@
+/* ===============================
+   GLOBAL RESET & SAFETY
+   =============================== */
+
+/* Reset default margins/paddings and ensure predictable box sizing */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* Smooth scrolling + prevent horizontal scroll caused by transforms/grids */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Ensure body can grow full height */
+body {
+  min-height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ===============================
+   PDP GALLERY WRAPPER
+   =============================== */
+
+/* Root gallery block */
+.pdp-gallery {
+  width: 100%;
+}
+
+/* Centered container with max width and safe gutters */
+.pdp-gallery__container {
+  max-width: 1442px;
+  margin: 0 auto;
+  padding: 0 16px;
+  margin-top: 40px;
+}
+
+/* Main 3-column grid: thumbnails, main image, product info */
+.pdp-gallery__grid {
+  display: grid;
+  grid-template-columns: 150px 640px 1fr;
+  column-gap: 32px;
+  align-items: start;
+}
+
+.pdp-gallery__col {
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ===============================
+   THUMBNAILS COLUMN
+   =============================== */
+
+.pdp-thumbs {
+  position: relative; /* anchor for arrows */
+  width: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.pdp-thumbs__viewport {
+  width: 150px;
+  height: 750px;
+  overflow: hidden; /* hide extra thumbnails */
+  position: relative;
+}
+
+.pdp-thumbs__list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transform: translateY(0);
+  transition: transform 0.35s ease;
+}
+
+.pdp-thumbs__list img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+/* ===============================
+   THUMB SCROLL ARROWS
+   =============================== */
+
+/* Base arrow styling */
+.pdp-thumbs__arrow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  z-index: 10; /* always above thumbnails */
+  opacity: 1;
+}
+
+.pdp-thumbs__arrow img {
+  width: 20px;
+  height: 12px;
+  object-fit: contain;
+}
+
+/* Hover effect */
+.pdp-thumbs__arrow:hover {
+  background-color: #e0e0e0;
+}
+
+/* Top arrow positioning */
+.pdp-thumbs__arrow--top {
+  top: 0; /* position at top of viewport */
+  bottom: auto;
+  display: none; /* hidden initially, will be shown via JS */
+}
+
+/* Bottom arrow positioning */
+.pdp-thumbs__arrow--bottom {
+  bottom: 0; /* position at bottom of viewport */
+  top: auto;
+}
+
+/* Smooth fade effect when showing/hiding arrows */
+.pdp-thumbs__arrow.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* Main image container (slider wrapper) */
+.pdp-main-image {
+  width: 100%;
+  height: 750px;
+  overflow: hidden;       /* hide extra images */
+  background: #F4F4F4;
+  position: relative;     /* for overlay positioning */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Slider images container */
+.pdp-main-image-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* smooth sliding */
+}
+
+/* Individual images inside slider */
+.pdp-main-image-slider img {
+  width: 100%;
+  height: 659px;
+  max-width: 640px; /* matches column width */
+  object-fit: contain;
+  border-radius: 8px;
+  flex-shrink: 0;   /* prevent shrinking in flex row */
+}
+
+/* Overlay div with arrow, text, and icon */
+.pdp-main-overlay {
+  position: absolute;
+  top: 700px;        /* overlay above bottom of image */
+  left: 42%;
+  transform: translateX(-50%);
+  width: 350px;
+  height: 65px;
+  background-color: #F4F4F4;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* left arrow, center text, right icon */
+  padding: 0 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 20;
+}
+
+/* Left arrow inside overlay */
+.overlay-left-arrow {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+/* Center text inside overlay */
+.overlay-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Right icon inside overlay */
+.overlay-icon {
+  width: 24px;
+  height: 24px;
+}
+
+
+@media (max-width: 435px) {
+
+  /* Stack columns vertically */
+  .pdp-gallery__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Main image first */
+  .pdp-gallery__col--main {
+    order: 1;
+    width: 100%;
+  }
+
+  /* Thumbnails second */
+  .pdp-gallery__col--thumbs {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto; /* allow horizontal swipe */
+    -webkit-overflow-scrolling: touch;
+    padding: 0 10px;
+  }
+
+  /* Horizontal thumbnail list */
+  .pdp-thumbs__list {
+    flex-direction: row;
+    gap: 10px;
+    width: max-content;
+  }
+
+  .pdp-thumbs__list img {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  /* Hide arrows on mobile */
+  .pdp-thumbs__arrow {
+    display: none;
+  }
+
+  /* Main image adjustments */
+  .pdp-main-image {
+    width: 100%;
+    height: 400px; /* fit screen */
+    overflow-x: auto; /* allow horizontal scroll */
+    scroll-snap-type: x mandatory;
+    display: flex;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pdp-main-image-slider {
+    display: flex;
+    gap: 10px;
+  }
+
+  .pdp-main-image-slider img {
+    width: 100%;
+    max-width: 320px; /* match mobile width */
+    height: auto;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  /* Overlay below main image */
+  .pdp-main-overlay {
+    position: relative; /* below main image */
+    top: 0;
+    margin-top: -55px; /* float overlay on bottom of image */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 55px;
+    padding: 0 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #F4F4F4;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+
+  .overlay-left-arrow,
+  .overlay-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .overlay-content {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
