@@ -600,3 +600,110 @@ body {
   }
 
 }
+
+@media (max-width: 768px) {
+/* ---------- DETAILS WRAPPER ---------- */
+  .details {
+    width: 314px;
+    margin: 16px auto 0;
+    gap: 16px;
+  }
+
+  /* ---------- BREADCRUMB ---------- */
+  .breadcrumb {
+    font-size: 12px;
+  }
+
+  /* ---------- TITLE ---------- */
+  .title {
+    font-size: 22px;
+    line-height: 1.25;
+  }
+
+  /* ---------- PRICE ---------- */
+  .price {
+    gap: 16px;
+  }
+
+  /* ---------- DESCRIPTION ---------- */
+  .desc p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ---------- SEX / POIDS ---------- */
+  .info {
+    width: 311px;
+    height: 48px;
+    justify-content: space-between;
+  }
+
+  .info-item:first-child {
+    width: 127px;
+  }
+
+  .info-item:last-child {
+    width: 115px;
+  }
+
+  /* ---------- ADD TO CART ---------- */
+  .add-cart {
+    width: 312px;
+    height: 60px;
+    margin: 12px auto 0;
+  }
+
+  /* ---------- QTY + WISHLIST ---------- */
+  .bottom-actions {
+    width: 312px;
+    gap: 23px;
+    margin: 12px auto 0;
+  }
+
+  .qty-container {
+    width: 133px;
+    height: 47px;
+    border-width: 1px;
+  }
+
+  .wishlist-container {
+    width: 156px;
+    height: 47px;
+    border-width: 1px;
+  }
+
+  /* ---------- DELIVERY ---------- */
+  .delivery {
+    width: 314px;
+    gap: 10px;
+    padding: 14px 8px;
+    margin: 12px auto 0;
+  }
+
+  .delivery-text1 {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .delivery-text {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  /* ---------- PAYMENT ---------- */
+  .payment {
+    width: 310px;
+    gap: 16px;
+    margin: 12px auto 0;
+  }
+
+  .cards {
+    gap: 16px;
+  }
+
+  .cards img {
+    width: 61px;
+    height: 36px;
+  }
+
+}
