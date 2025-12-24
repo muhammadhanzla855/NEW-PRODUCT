@@ -55,11 +55,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const total = images.length;
   let currentIndex = 0;
 
-  // Width must match CSS
-  const IMAGE_WIDTH = 640;
+  // Dynamically get image width
+  function getImageWidth() {
+    return slider.clientWidth;
+  }
 
   function updateSlider() {
-    slider.style.transform = `translateX(-${currentIndex * IMAGE_WIDTH}px)`;
+    const width = getImageWidth();
+    slider.style.transform = `translateX(-${currentIndex * width}px)`;
+    slider.style.transition = "transform 0.3s ease-in-out";
   }
 
   // Left arrow click
@@ -77,6 +81,39 @@ document.addEventListener("DOMContentLoaded", () => {
       updateSlider();
     }
   });
+
+  // Touch / swipe support for mobile
+  let startX = 0;
+  let isDragging = false;
+
+  slider.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
+
+  slider.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    const currentX = e.touches[0].clientX;
+    const diff = startX - currentX;
+    slider.style.transform = `translateX(-${currentIndex * getImageWidth() + diff}px)`;
+  });
+
+  slider.addEventListener("touchend", (e) => {
+    isDragging = false;
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+
+    if (diff > 50 && currentIndex < total - 1) {
+      currentIndex++;
+    } else if (diff < -50 && currentIndex > 0) {
+      currentIndex--;
+    }
+
+    updateSlider();
+  });
+
+  // Update slider on window resize
+  window.addEventListener("resize", updateSlider);
 
   // Initialize
   updateSlider();
