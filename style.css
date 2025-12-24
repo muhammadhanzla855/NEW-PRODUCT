@@ -180,7 +180,6 @@ body {
   width: 350px;
   height: 65px;
   background-color: white;
-  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between; /* left arrow, center text, right icon */
