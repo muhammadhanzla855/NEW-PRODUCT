@@ -269,68 +269,146 @@ body {
 .pdp-lightbox__arrow--right {
   right: 40px;
 }
+.customize-btn{
+  display: none;
+}
 
-
-/* ===============================
-   MOBILE PDP (0–768px)
-================================ */
 
 @media (max-width: 768px) {
 
-  /* GRID → SINGLE COLUMN */
   .pdp-gallery__grid {
     grid-template-columns: 1fr;
     row-gap: 16px;
   }
 
-  /* THUMB COLUMN */
+  .pdp-gallery__col--main {
+    order: 1;
+  }
+
   .pdp-gallery__col--thumbs {
     order: 2;
     width: 100%;
   }
 
-  /* MAIN IMAGE COLUMN */
-  .pdp-gallery__col--main {
-    order: 1;
-  }
-
-  /* DETAILS COLUMN */
   .pdp-gallery__col--details {
     order: 3;
+    width: 100%;
   }
 
-  /* MAIN IMAGE HEIGHT AUTO */
+}
+@media (max-width: 768px) {
+
+  .pdp-gallery__col--main {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pdp-mobile-main-wrapper {
+    width: 350px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #F9F8F6;
+  }
+
+  .pdp-main-image-wrapper {
+    position: relative;
+    width: 301px;
+    height: 380px;
+    overflow: hidden;
+  }
+
+  .pdp-main-image-slider {
+    display: flex;
+    height: 100%;
+  }
+
   .pdp-main-image-slider img {
-    height: auto;
-    max-width: 100%;
+    width: 301px;
+    height: 225px;
+    object-fit: contain;
+    background: transparent;
+    flex-shrink: 0;
   }
 
-  /* REMOVE FIXED HEIGHTS */
+  /* 🔴 IMPORTANT RESET */
+  .pdp-main-overlay {
+    top: auto;                 /* RESET DESKTOP */
+    left: 0;
+    transform: none;
+    bottom: 0;
+
+    width: 300px;
+    height: 63px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    z-index: 10;
+    margin-bottom: 10px;
+    border-radius: none;
+  }
+
+}
+@media (max-width: 768px) {
+  .customize-btn {
+    display: inline-block;       /* important for width & height */
+    width: 300px;                 /* full width */
+    height: 50px;                /* same as add-cart */
+    line-height: 50px;           /* vertically center text */
+    text-align: center;          /* center text */
+    background-color: #000;      /* black background */
+    color: #fff;                 /* white text */
+    border: none;                /* remove default border */
+    font-size: 16px;             /* match add-cart */
+    font-weight: 600;            /* match add-cart */
+    margin-top: 8px;
+    cursor: pointer;
+    text-decoration: none;       /* remove underline */
+    transition: all 0.3s ease;  /* smooth hover */
+    margin-bottom: 5px;
+  }
+
+  .customize-btn:hover {
+    background-color: transparent; 
+    color: #000;                 
+    border: 1px solid #000;      /* same hover effect as add-cart */
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* FULL WIDTH FIX */
+  .pdp-thumbs {
+    width: 100% !important;
+    justify-content: flex-start;
+  }
+
   .pdp-thumbs__viewport {
-    height: auto;
-    overflow-x: auto;
+    width: 100% !important;
+    height: 132px;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    position: relative;
   }
 
-  /* HORIZONTAL THUMBS */
   .pdp-thumbs__list {
+    display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 12px;
+    padding: 0 12px;
+    width: max-content;
     transform: none !important;
   }
 
   .pdp-thumbs__list img {
-    width: 80px;
-    height: 100px;
+    width: 106px;
+    height: 132px;
     flex-shrink: 0;
+    object-fit: cover;
   }
 
-  /* HIDE THUMB ARROWS */
   .pdp-thumbs__arrow {
     display: none !important;
-  }
-
-  /* HIDE DESKTOP OVERLAY */
-  .pdp-main-overlay {
-    display: none;
   }
 }
