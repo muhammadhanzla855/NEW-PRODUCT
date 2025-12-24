@@ -271,3 +271,66 @@ body {
 }
 
 
+/* ===============================
+   MOBILE PDP (0–768px)
+================================ */
+
+@media (max-width: 768px) {
+
+  /* GRID → SINGLE COLUMN */
+  .pdp-gallery__grid {
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+  }
+
+  /* THUMB COLUMN */
+  .pdp-gallery__col--thumbs {
+    order: 2;
+    width: 100%;
+  }
+
+  /* MAIN IMAGE COLUMN */
+  .pdp-gallery__col--main {
+    order: 1;
+  }
+
+  /* DETAILS COLUMN */
+  .pdp-gallery__col--details {
+    order: 3;
+  }
+
+  /* MAIN IMAGE HEIGHT AUTO */
+  .pdp-main-image-slider img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  /* REMOVE FIXED HEIGHTS */
+  .pdp-thumbs__viewport {
+    height: auto;
+    overflow-x: auto;
+  }
+
+  /* HORIZONTAL THUMBS */
+  .pdp-thumbs__list {
+    flex-direction: row;
+    gap: 10px;
+    transform: none !important;
+  }
+
+  .pdp-thumbs__list img {
+    width: 80px;
+    height: 100px;
+    flex-shrink: 0;
+  }
+
+  /* HIDE THUMB ARROWS */
+  .pdp-thumbs__arrow {
+    display: none !important;
+  }
+
+  /* HIDE DESKTOP OVERLAY */
+  .pdp-main-overlay {
+    display: none;
+  }
+}
