@@ -233,19 +233,4 @@ lightbox.addEventListener('click', (e) => {
 });
 
 
-  // ===== Quantity Behavior =====
-  const minusBtn = document.querySelector(".qty-btn.minus");
-  const plusBtn = document.querySelector(".qty-btn.plus");
-  const countEl = document.querySelector(".count");
-
-  minusBtn.addEventListener("click", () => {
-    let currentCount = parseInt(countEl.textContent);
-    if (currentCount > 1) {
-      countEl.textContent = currentCount - 1;
-    }
-  });
-
-  plusBtn.addEventListener("click", () => {
-    let currentCount = parseInt(countEl.textContent);
-    countEl.textContent = currentCount + 1;
-  });
+  
