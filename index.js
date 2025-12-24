@@ -145,3 +145,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize slider
   updateSlider();
 });
+
+

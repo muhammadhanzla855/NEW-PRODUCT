@@ -147,7 +147,6 @@ body {
   width: 100%;
   height: 750px;
   overflow: hidden;       /* hide extra images */
-  background: #F4F4F4;
   position: relative;     /* for overlay positioning */
   display: flex;
   align-items: center;
@@ -163,11 +162,13 @@ body {
 /* Individual images inside slider */
 .pdp-main-image-slider img {
   width: 100%;
-  height: 659px;
+  height: 750px;
   max-width: 640px; /* matches column width */
   object-fit: contain;
   border-radius: 8px;
   flex-shrink: 0;   /* prevent shrinking in flex row */
+  position: relative;
+  background-color: #F4F4F4;
 }
 
 /* Overlay div with arrow, text, and icon */
@@ -178,7 +179,7 @@ body {
   transform: translateX(-50%);
   width: 350px;
   height: 65px;
-  background-color: #F4F4F4;
+  background-color: white;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -209,112 +210,4 @@ body {
 .overlay-icon {
   width: 24px;
   height: 24px;
-}
-
-
-@media (max-width: 435px) {
-
-  /* Stack columns vertically */
-  .pdp-gallery__grid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  /* Main image first */
-  .pdp-gallery__col--main {
-    order: 1;
-    width: 100%;
-  }
-
-  /* Thumbnails second */
-  .pdp-gallery__col--thumbs {
-    order: 2;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    overflow-x: auto; /* allow horizontal swipe */
-    -webkit-overflow-scrolling: touch;
-    padding: 0 10px;
-  }
-
-  /* Horizontal thumbnail list */
-  .pdp-thumbs__list {
-    flex-direction: row;
-    gap: 10px;
-    width: max-content;
-  }
-
-  .pdp-thumbs__list img {
-    width: 80px;
-    height: 100px;
-    object-fit: cover;
-    cursor: pointer;
-  }
-
-  /* Hide arrows on mobile */
-  .pdp-thumbs__arrow {
-    display: none;
-  }
-
-  /* Main image adjustments */
-  .pdp-main-image {
-    width: 100%;
-    height: 400px; /* fit screen */
-    overflow-x: auto; /* allow horizontal scroll */
-    scroll-snap-type: x mandatory;
-    display: flex;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .pdp-main-image-slider {
-    display: flex;
-    gap: 10px;
-  }
-
-  .pdp-main-image-slider img {
-    width: 100%;
-    max-width: 320px; /* match mobile width */
-    height: auto;
-    flex-shrink: 0;
-    scroll-snap-align: center;
-    object-fit: contain;
-    border-radius: 8px;
-  }
-
-  /* Overlay below main image */
-  .pdp-main-overlay {
-    position: relative; /* below main image */
-    top: 0;
-    margin-top: -55px; /* float overlay on bottom of image */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    height: 55px;
-    padding: 0 8px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #F4F4F4;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    z-index: 10;
-  }
-
-  .overlay-left-arrow,
-  .overlay-icon {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-  }
-
-  .overlay-content {
-    flex: 1;
-    text-align: center;
-    font-size: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 }
