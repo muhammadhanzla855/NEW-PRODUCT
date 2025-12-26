@@ -142,60 +142,60 @@ body {
 }
 
 
-/* Main image container (slider wrapper) */
+/* Main image container (column wrapper gets background) */
 .pdp-main-image {
   width: 100%;
   height: 750px;
-  overflow: hidden;       /* hide extra images */
-  position: relative;     /* for overlay positioning */
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #F4F4F4;   /* ✅ background moved here */
 }
 
-/* Slider images container */
+/* Slider */
 .pdp-main-image-slider {
   display: flex;
-  transition: transform 0.5s ease-in-out; /* smooth sliding */
+  transition: transform 0.5s ease-in-out;
 }
 
-/* Individual images inside slider */
+/* Images — NO background */
 .pdp-main-image-slider img {
   width: 100%;
-  height: 750px;
-  max-width: 640px; /* matches column width */
+  height: 600px;
+  max-width: 640px;
   object-fit: contain;
+  flex-shrink: 0;
+  background: transparent;     /* ✅ removed image bg */
   border-radius: 8px;
-  flex-shrink: 0;   /* prevent shrinking in flex row */
-  position: relative;
-  background-color: #F4F4F4;
 }
 
-/* Overlay div with arrow, text, and icon */
+/* Overlay — unchanged position & size */
 .pdp-main-overlay {
   position: absolute;
-  top: 700px;        /* overlay above bottom of image */
-  left: 42%;
+  top: 700px;                  /* ✅ SAME as before */
+  left: 42%;                   /* ✅ SAME as before */
   transform: translateX(-50%);
   width: 350px;
   height: 65px;
-  background-color: white;
+  background-color: #fff;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* left arrow, center text, right icon */
+  justify-content: space-between;
   padding: 0 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   z-index: 20;
 }
 
-/* Left arrow inside overlay */
-.overlay-left-arrow {
+/* Overlay children */
+.overlay-left-arrow,
+.overlay-icon {
   width: 44px;
   height: 44px;
   cursor: pointer;
 }
 
-/* Center text inside overlay */
 .overlay-content {
   flex: 1;
   display: flex;
@@ -203,12 +203,6 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-/* Right icon inside overlay */
-.overlay-icon {
-  width: 44px;
-  height: 44px;
 }
 
 /* ===============================
