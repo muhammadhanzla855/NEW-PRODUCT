@@ -234,3 +234,69 @@ lightbox.addEventListener('click', (e) => {
 
 
   
+   const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tab = button.getAttribute('data-tab');
+
+      tabContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+
+      document.getElementById(tab).classList.remove('hidden');
+      button.classList.add('active');
+    });
+  });
+
+  const slider = document.getElementById("qtySlider");
+const bubble = document.getElementById("sliderBubble");
+const qtyText = document.getElementById("qtyText");
+const qtyValue = document.getElementById("qtyValue");
+const unitPrice = document.getElementById("unitPrice");
+const discountBadge = document.getElementById("discountBadge");
+
+const priceTable = [
+  { max: 1, price: 57.9 },
+  { max: 2, price: 55.9 },
+  { max: 4, price: 53.9 },
+  { max: 9, price: 50.9 },
+  { max: 19, price: 41.9 },
+  { max: 34, price: 39.9 },
+  { max: 49, price: 37.9 },
+  { max: 99, price: 35.9 },
+  { max: 1000, price: 33.9 }
+];
+
+function updateUI(val) {
+  const percent = ((val - slider.min) / (slider.max - slider.min)) * 100;
+  bubble.style.left = `${percent}%`;
+
+  bubble.textContent = `${val} Piece`;
+  qtyText.textContent = val;
+  qtyValue.textContent = val;
+
+  const base = 57.9;
+  const tier = priceTable.find(t => val <= t.max);
+  unitPrice.textContent = tier.price.toFixed(2);
+
+  const discount = Math.round(((base - tier.price) / base) * 100);
+  discountBadge.textContent = `${discount}% QUANTITY DISCOUNT`;
+}
+
+slider.addEventListener("input", () => updateUI(slider.value));
+
+document.getElementById("plus").onclick = () => {
+  slider.value = Math.min(100, +slider.value + 1);
+  updateUI(slider.value);
+};
+
+document.getElementById("minus").onclick = () => {
+  slider.value = Math.max(1, +slider.value - 1);
+  updateUI(slider.value);
+};
+
+updateUI(slider.value);
