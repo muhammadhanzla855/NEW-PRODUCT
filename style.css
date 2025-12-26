@@ -1121,22 +1121,48 @@ body {
 /* PRICE TABLE */
 .price-table {
   margin-top: 40px;
-  max-width: 420px;
+  max-width: auto;
 }
 
-.table-header {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 700;
-  padding-bottom: 8px;
-  border-bottom: 2px solid #000;
-}
-
+.table-header,
 .row {
   display: flex;
-  justify-content: space-between;
   padding: 6px 0;
+  align-items: center;
 }
+
+/* Header styling */
+.table-header {
+  font-weight: 700;
+  border-bottom: 2px solid #000; /* bold top line */
+  padding-bottom: 8px;
+}
+
+/* First column: left-aligned */
+.table-header span:first-child,
+.row span:first-child {
+  width: 50%;         
+  text-align: left;   
+}
+
+/* Second column: middle start */
+.table-header span:last-child,
+.row span:last-child {
+  width: 50%;          
+  text-align: left;    
+  padding-left: 10px;  
+}
+
+/* Row styling */
+.row {
+  border-bottom: 0.2px solid #efecec;  /* light gray line under each row */
+}
+
+/* Last row: bottom line like header */
+.row:last-child {
+  border-bottom: 2px solid #000;    /* bold line at the end */
+}
+
 /* SCALE BELOW SLIDER */
 .price-tab .slider-scale {
   display: flex;
@@ -1166,5 +1192,51 @@ body {
 
 .price-tab .slider-scale span:last-child {
   transform: translateX(-100%);
+}
+
+.discount-badge {
+  padding: 6px 14px;           /* a bit more padding for presence */
+  background-color: yellow;   /* your yellow */
+  color: #111827;              /* dark text for contrast */
+  font-size: 15px;
+  font-weight: 900;            /* max bold */
+  width: 240px;
+  text-align: center;           /* center text */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;       /* makes text feel heavier */
+  border-radius: 4px;
+}
+
+.unit-price {
+  font-size: 20px;       /* unified bigger size for all */
+  font-weight: 500;      
+  color: #111827;        
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;              /* space between elements */
+}
+
+.unit-price strong {
+  font-size: 20px;       /* same size as rest */
+  font-weight: 500;      
+  margin-left: 4px;
+}
+
+.unit-price #qtyText {
+  font-size: 20px;       /* same size as rest */
+  font-weight: 600;      /* slightly bolder for emphasis */
+}
+.price-note {
+  display: block;          /* ensures it appears on its own line */
+  font-size: 14px;         /* smaller than main price */
+  color: #6b7280;          /* grayish color */
+  margin-top: 6px;         /* spacing from above elements */
+  font-weight: 400;        /* normal weight */
+}
+@media (max-width: 768px) {
+  .price-slider-wrap {
+    display: none;
+  }
 }
 
